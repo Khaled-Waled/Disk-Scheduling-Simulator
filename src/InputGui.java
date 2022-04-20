@@ -43,6 +43,9 @@ public class InputGui extends JFrame implements ActionListener
         this.add(l_numOfRequests);
         l_numOfRequests.setBounds(10,50,200,50);
         l_numOfRequests.setFont(lFont);
+        this.add(l_width);
+        l_width.setBounds(10,90,200,50);
+        l_width.setFont(lFont);
         this.add(l_start);
         l_start.setBounds(10,120,200,50);
         l_start.setFont(lFont);
@@ -55,6 +58,8 @@ public class InputGui extends JFrame implements ActionListener
         this.add(f_request);
         f_request.setBounds(200,28,200,20);
         f_request.setFont(fFont);
+        this.add(f_width);
+        f_width.setBounds(200,108,200,20);
         this.add(f_start);
         f_start.setBounds(200,138,200,20);
         //End of Adding Text Fields
@@ -112,9 +117,11 @@ public class InputGui extends JFrame implements ActionListener
     JLabel l_request        = new JLabel("Request Cylinder:");
     JLabel l_algorithm      = new JLabel("Please, Choose the scheduling algorithm to apply:");
     JLabel l_numOfRequests  = new JLabel("Current Requests: 0");
+    JLabel l_width          = new JLabel("Disk Width: ");
     JLabel l_start          = new JLabel("Initial position is: ");
 
     JTextField f_request    = new JTextField();
+    JTextField f_width      = new JTextField();
     JTextField f_start      = new JTextField();
 
     JButton b_add = new JButton("Add");
@@ -159,12 +166,13 @@ public class InputGui extends JFrame implements ActionListener
         else if(e.getSource()==rb_opt)             type =6;
 
         //Run button
-        else if(e.getSource()==b_run && requests.size()>0 && !f_start.getText().equals(""))
+        else if(e.getSource()==b_run && requests.size()>0 && !f_start.getText().equals("")&& !f_width.getText().equals(""))
         {
             int start = Integer.parseInt(f_start.getText());
             boolean right = c_right.isSelected();
+            int width = Integer.parseInt(f_width.getText());
             this.dispose();
-            new GUI(type,start,right);
+            new GUI(type,start,right,width);
         }
 
     }

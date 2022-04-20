@@ -5,7 +5,16 @@ public class Main {
 
     public static void main(String[] args)
     {
-        InputGui.getInstance();
+
+        //Test: skipping first screen
+        InputGui.requests = new ArrayList<>(Arrays.asList(40, 30, 10, 90, 80, 70, 60, 20));
+        new GUI(5,40,true,100);
+
+
+        //InputGui.getInstance();
+
+
+
         /*
         //Testing SSTF , FCFS
         printArray(new SSTF().SSTF(new int[]{ 176, 79, 34, 60, 92, 11, 41, 114 }, 50));

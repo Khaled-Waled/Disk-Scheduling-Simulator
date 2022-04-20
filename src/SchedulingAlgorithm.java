@@ -5,6 +5,7 @@ public abstract class SchedulingAlgorithm
 {
     public static int totalDistance = 0;
     public static int start =0;
+    public static int diskWidth=1000;
     public static ArrayList<Integer> processes;
     public static ArrayList<Integer> result;
     public SchedulingAlgorithm()

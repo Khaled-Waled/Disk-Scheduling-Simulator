@@ -1,18 +1,19 @@
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class GUI
+public class GUI extends JFrame
 {
     static int type;
+    static int width;
     static int start;
     static boolean right;
     public SchedulingAlgorithm schedulingAlgorithm;
-    public JFrame frame;
 
-    GUI(int type, int start, boolean right)
+    GUI(int type, int start, boolean right, int width)
     {
         //Get input from previous window
         GUI.type = type;
+        GUI.width = width;
         GUI.start = start;
         GUI.right = right;
         switch (type)
@@ -37,13 +38,20 @@ public class GUI
         ArrayList<Integer> result = SchedulingAlgorithm.result;
 
 
+        /*Display Result*/
+        this.setVisible(true);
+        this.setSize(600, 600);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(null);
+
+
+
         /*
         //Debugging in the command line
-        for (int a: res)
+        for (int a: result)
             System.out.println(a);
         System.out.println("\nTotal Distance = "+SchedulingAlgorithm.totalDistance);
         */
-
     }
 
 }
