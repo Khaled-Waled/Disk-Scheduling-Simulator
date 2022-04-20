@@ -8,3 +8,7 @@ Initial head start cylinder: 53
 The newly optimized algorithm procedure and flowchart are found in the
 following paper:
 https://research.ijcaonline.org/volume93/number18/pxc3896046.pdf
+
+# Screenshots of the program Working:
+![Screen1](Images/Screen1.png)
+![Screen2](Images/Screen2.png)
