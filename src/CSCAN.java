@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class SCAN extends SchedulingAlgorithm{
+public class CSCAN extends SchedulingAlgorithm{
 
-    public SCAN(ArrayList<Integer> requests, int start){
+    public CSCAN(ArrayList<Integer> requests, int start){
         super(requests, start);
     }
 
@@ -24,6 +24,12 @@ public class SCAN extends SchedulingAlgorithm{
             requests.add(SchedulingAlgorithm.diskWidth-1);
         }
 
+        //adding 0 first cylinder
+        boolean zeroExist = requests.contains(0);
+        if(!zeroExist){
+            requests.add(0);
+        }
+
         //sort the requests
         Collections.sort(requests);
 
@@ -38,8 +44,8 @@ public class SCAN extends SchedulingAlgorithm{
             tmp.add(requests.get(i));
         }
 
-        //after finishing right go left starting from first location before the start index
-        for(int i=startLoc-1;i>=0;i--){
+        //after finishing right from start index go right starting from first cylinder till we reach startLoc-1
+        for(int i=0;i<startLoc;i++){
             tmp.add(requests.get(i));
         }
 
