@@ -1,10 +1,28 @@
-public class main {
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Main {
 
     public static void main(String[] args) {
-        printArray(new SSTF().SSTF(new int[]{ 176, 79, 34, 60, 92, 11, 41, 114 }, 50));
-        printArray(new FCFS().FCFS(new int[]{98, 183, 37, 122, 14, 124, 65, 67}, 53));
+        //printArray(new SSTF().SSTF(new int[]{ 176, 79, 34, 60, 92, 11, 41, 114 }, 50));
+        //printArray(new FCFS().FCFS(new int[]{98, 183, 37, 122, 14, 124, 65, 67}, 53));
+
+        ArrayList<Integer> processes = new ArrayList<>(Arrays.asList(40, 30, 10, 90, 80, 70, 60, 20));
+        new CLook(processes, 40);
+        CLook.execute(true);
+        printArray(CLook.result);
+        System.out.println("Total Distance = "+ CLook.totalDistance);
     }
 
+    //Overloads for printing any array type
+    public static void printArray(ArrayList<Integer> res)
+    {
+        System.out.println("===========================");
+        for(int i : res){
+            System.out.println(i);
+        }
+        System.out.println("===========================");
+    }
     public static void printArray(int res[]){
         int n = res.length;
         System.out.println("===========================");
