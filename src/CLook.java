@@ -1,25 +1,23 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class CLook extends SchedulingAlgorithm
-{
+public class CLook extends SchedulingAlgorithm {
     public boolean right;
-    public CLook (ArrayList<Integer> processes, int start,boolean right)
-    {
-        super(processes,start);
+
+    public CLook(ArrayList<Integer> processes, int start, boolean right) {
+        super(processes, start);
         this.right = right;
     }
-    public void execute()
-    {
+
+    public void execute() {
         execute(right);
     }
 
-    public void execute(boolean right)
-    {
+    public void execute(boolean right) {
         //reset distance counter;
         totalDistance = 0;
         //Create copy of the array for safe operation
-        ArrayList<Integer> requests = new ArrayList<>(processes);
+        ArrayList<Integer> requests = new ArrayList<>(SchedulingAlgorithm.requests);
 
         /*
         //test
@@ -35,41 +33,35 @@ public class CLook extends SchedulingAlgorithm
         */
 
         //Declare Head pointer position
-        int pointer=0;
+        int pointer = 0;
 
         //prepare request[ ]
-        if(right)
-        {
+        if (right) {
             Collections.sort(requests);
             //position the pointer
-            for(;pointer<requests.size(); pointer++)
-            {
-                if(start <= requests.get(pointer))
+            for (; pointer < requests.size(); pointer++) {
+                if (start <= requests.get(pointer))
                     break;
             }
-        }
-        else
-        {
+        } else {
             requests.sort(Collections.reverseOrder());
             //position the pointer
-            for(;pointer<requests.size(); pointer++)
-            {
-                if(start >= requests.get(pointer))
+            for (; pointer < requests.size(); pointer++) {
+                if (start >= requests.get(pointer))
                     break;
             }
         }
 
         //serve requests
         ArrayList<Integer> temp = new ArrayList<>();
-        int lastRequest= start;
-        while (requests.size()>0)
-        {
+        int lastRequest = start;
+        while (requests.size() > 0) {
             //if it reached the end reset pointer
-            if(pointer >= requests.size())
+            if (pointer >= requests.size())
                 pointer = 0;
 
             //add to total distance
-            totalDistance += Math.abs(lastRequest - requests.get(pointer));
+//            totalDistance += Math.abs(lastRequest - requests.get(pointer));
 
             //update last request served to current
             lastRequest = requests.get(pointer);
@@ -82,5 +74,7 @@ public class CLook extends SchedulingAlgorithm
         }
         //Update result array
         result = temp;
+
+        calculateTotalDistance();
     }
 }
