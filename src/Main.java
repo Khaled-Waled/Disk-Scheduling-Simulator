@@ -3,12 +3,11 @@ import java.util.Arrays;
 
 public class Main {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
         //Test: skipping first screen
         InputGui.requests = new ArrayList<>(Arrays.asList(40, 30, 10, 90, 80, 70, 60, 20));
-        new GUI(5,40,true,100);
+        new GUI(5, 40, true, 100);
 
 
         //InputGui.getInstance();
@@ -32,18 +31,18 @@ public class Main {
     }
 
     //Overloads for printing any array type
-    public static void printArray(ArrayList<Integer> res)
-    {
+    public static void printArray(ArrayList<Integer> res) {
         System.out.println("===========================");
-        for(int i : res){
+        for (int i : res) {
             System.out.println(i);
         }
         System.out.println("===========================");
     }
-    public static void printArray(int res[]){
+
+    public static void printArray(int res[]) {
         int n = res.length;
         System.out.println("===========================");
-        for(int i : res){
+        for (int i : res) {
             System.out.println(i);
         }
         System.out.println("===========================");

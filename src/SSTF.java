@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 
-public class SSTF {
+public class SSTF extends SchedulingAlgorithm {
+
+    public SSTF(ArrayList<Integer> requests, int start) {
+        super(requests, start);
+    }
 
     public static int diff(ArrayList<Integer> req, int head) {
         ArrayList<Integer> requests = new ArrayList<>(req.size());
@@ -25,22 +29,17 @@ public class SSTF {
         return Min;
     }
 
-    public static int[] SSTF(int[] req, int start) {
+    @Override
+    public void execute() {
         int i = 1;
-        ArrayList<Integer> requests = new ArrayList<>(req.length);
-
-        for (int a : req)
-            requests.add(a);
-
-        int[] result = new int[requests.size() + 1];
-        result[0] = start;
+        result = new ArrayList<>();
+        result.add(start);
         while (!requests.isEmpty()) {
-            int best = diff(requests, result[i - 1]);
-            result[i] = requests.get(best);
+            int best = diff(requests, result.get(i - 1));
+            result.add(requests.get(best));
             requests.remove(best);
             i++;
         }
-        return result;
+        calculateTotalDistance();
     }
-
 }
