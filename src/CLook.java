@@ -1,30 +1,20 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class CLook
+public class CLook extends SchedulingAlgorithm
 {
-    public static int totalDistance = 0;
-    public static int start =0;
-    public static ArrayList<Integer> processes;
-    public static ArrayList<Integer> result;
-    public CLook()
+    public boolean right;
+    public CLook (ArrayList<Integer> processes, int start,boolean right)
     {
-        CLook.totalDistance =0;
-        CLook.start =0;
-        CLook.processes = new ArrayList<>();
+        super(processes,start);
+        this.right = right;
     }
-    public CLook(ArrayList<Integer> processes, int start)
+    public void execute()
     {
-        CLook.totalDistance = 0;
-        CLook.start =start;
-        CLook.processes = processes;
-    }
-    public static void execute()
-    {
-        execute(true);
+        execute(right);
     }
 
-    public static void execute(boolean right)
+    public void execute(boolean right)
     {
         //reset distance counter;
         totalDistance = 0;
@@ -91,6 +81,6 @@ public class CLook
 
         }
         //Update result array
-        CLook.result = temp;
+        result = temp;
     }
 }
