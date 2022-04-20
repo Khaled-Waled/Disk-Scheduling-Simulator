@@ -8,7 +8,8 @@ public class Main {
 
         //Test: skipping first screen
         InputGui.requests = new ArrayList<>(Arrays.asList(40, 30, 10, 90, 80, 70, 60, 20));
-        new GUI(5,40,true,100);
+        //InputGui.requests = new ArrayList<>(Arrays.asList(98, 183, 37, 122, 14, 124, 65, 67));
+        new GUI(5,50,true,200);
 
 
         //InputGui.getInstance();

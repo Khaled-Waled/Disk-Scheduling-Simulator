@@ -23,7 +23,6 @@ public class GUI extends JFrame
         {
             case 5:
             {
-
                 schedulingAlgorithm = new CLook(InputGui.requests,40,right);
                 break;
             }
@@ -37,6 +36,7 @@ public class GUI extends JFrame
         }
 
         //Execute and get result
+        SchedulingAlgorithm.start = start;
         schedulingAlgorithm.execute();
         ArrayList<Integer> result = SchedulingAlgorithm.result;
 
@@ -62,6 +62,7 @@ public class GUI extends JFrame
             System.out.println(a);
         System.out.println("\nTotal Distance = "+SchedulingAlgorithm.totalDistance);
 
+
     }
 
     public void paint (Graphics g)
@@ -73,14 +74,14 @@ public class GUI extends JFrame
 
         //Draw Grid
         ArrayList<Line2D> gridLines = new ArrayList<>();
-        for(int i=0; i<SchedulingAlgorithm.result.size(); i++)
+        for(int i=0; i<SchedulingAlgorithm.result.size()+1; i++)
         {
             Line2D line = new Line2D.Float(10, y, 590, y);
             gridLines.add(line);
-            y+= 500.0/SchedulingAlgorithm.result.size();
+            y+= 500.0/(SchedulingAlgorithm.result.size()+1);
         }
-        gridLines.add(new Line2D.Float(10, 100, 10, y-((float) 500.0/SchedulingAlgorithm.result.size())));
-        gridLines.add(new Line2D.Float(590, 100, 590, y-((float) 500.0/SchedulingAlgorithm.result.size())));
+        gridLines.add(new Line2D.Float(10, 100, 10, y-((float) 500.0/(SchedulingAlgorithm.result.size()+1))));
+        gridLines.add(new Line2D.Float(590, 100, 590, y-((float) 500.0/(SchedulingAlgorithm.result.size()+1))));
 
         graphics2D.setColor(Color.BLACK);
         for (Line2D line: gridLines)
@@ -96,21 +97,24 @@ public class GUI extends JFrame
             int x1 = 10 + (last*500)/width;
             int x2 = 10 + (point*500)/width;
 
-            JLabel temp = new JLabel(String.valueOf(point));
+            JLabel temp = new JLabel(String.valueOf(last));
             this.add(temp);
-            temp.setBounds(x1, (int) (y - 500.0/SchedulingAlgorithm.result.size()),50,20);
-            //System.out.println("X1 = "+x1+" X2 = "+x2);
+            temp.setBounds(x1, (int) (y - 500.0/SchedulingAlgorithm.result.size()+1),50,20);
+            System.out.println("X1 = "+x1+" X2 = "+x2);
             g.setColor(Color.RED);
             g.fillOval(x1-5, (int) y-5, 10, 10);
-            Line2D line;
-            if (point == SchedulingAlgorithm.result.get(SchedulingAlgorithm.result.size()-1))
-                line = new Line2D.Float(x1,y,x2,y);
-            else
-                line = new Line2D.Float(x1,y,x2,y+=500.0/SchedulingAlgorithm.result.size());
+            Line2D line = new Line2D.Float(x1,y,x2,y+=500.0/(SchedulingAlgorithm.result.size()+1));
             g.setColor(Color.BLACK);
             graphics2D.draw(line);
             last = point;
-
+            if (point == SchedulingAlgorithm.result.get(SchedulingAlgorithm.result.size()-1))
+            {
+                g.setColor(Color.RED);
+                g.fillOval(x2-5, (int) y-5, 10, 10);
+                JLabel temp2 = new JLabel(String.valueOf(last));
+                this.add(temp2);
+                temp2.setBounds(x2, (int) (y - 500.0/SchedulingAlgorithm.result.size()+1),50,20);
+            }
         }
 
 
