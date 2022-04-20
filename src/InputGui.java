@@ -34,7 +34,6 @@ public class InputGui extends JFrame implements ActionListener
         Font lFont = new Font(Font.DIALOG,  Font.BOLD, 18);
         Font fFont = new Font(Font.DIALOG_INPUT,  Font.PLAIN, 18);
         Font bFont = new Font(Font.DIALOG,  Font.BOLD, 24);
-        Font rFont = new Font(Font.DIALOG,  Font.BOLD, 12);
 
         //Adding labels
         this.add(l_request);
