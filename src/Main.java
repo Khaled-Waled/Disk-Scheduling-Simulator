@@ -3,17 +3,23 @@ import java.util.Arrays;
 
 public class Main {
 
-    public static void main(String[] args) {
-        //printArray(new SSTF().SSTF(new int[]{ 176, 79, 34, 60, 92, 11, 41, 114 }, 50));
+    public static void main(String[] args)
+    {
+        InputGui.getInstance();
+        /*
+        //Testing SSTF , FCFS
+        printArray(new SSTF().SSTF(new int[]{ 176, 79, 34, 60, 92, 11, 41, 114 }, 50));
         //printArray(new FCFS().FCFS(new int[]{98, 183, 37, 122, 14, 124, 65, 67}, 53));
-
-
+        */
+        /*
+        //Testing CLook
         ArrayList<Integer> processes = new ArrayList<>(Arrays.asList(40, 30, 10, 90, 80, 70, 60, 20));
         SchedulingAlgorithm sa = new CLook(processes,40,true);
         sa.execute();
 
         printArray(SchedulingAlgorithm.result);
         System.out.println("Total Distance = "+ SchedulingAlgorithm.totalDistance);
+         */
     }
 
     //Overloads for printing any array type
