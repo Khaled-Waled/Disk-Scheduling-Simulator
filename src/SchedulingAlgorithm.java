@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 
-//TODO Make all algorithms inherit from this class
 public abstract class SchedulingAlgorithm {
     public static int totalDistance;
     public static int start;
-    public static int diskWidth = 1000;
+    public static int diskWidth;
     public static ArrayList<Integer> requests;
     public static ArrayList<Integer> result;
 

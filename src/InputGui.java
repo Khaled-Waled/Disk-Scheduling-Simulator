@@ -22,6 +22,7 @@ public class InputGui extends JFrame implements ActionListener {
         requests = new ArrayList<>();
 
         //Set up the frame
+        this.setResizable(false);
         this.setVisible(true);
         this.setSize(600, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
